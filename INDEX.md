@@ -299,7 +299,7 @@ Top Livelihood: Skills Training (50%)
 
 ### Responsive Features
 
-- ✅ Optimized for 320px - 480px screens
+- ✅ Optimized for 300px - 480px screens
 - ✅ Flexible layouts (single column on mobile)
 - ✅ Larger touch targets (44px minimum)
 - ✅ Readable font sizes on small screens
@@ -590,3 +590,4 @@ Performance:
 🇵🇭 **Ang iyong boses ay mahalaga!** (Your voice matters!)
 
 **Happy exploring! Start with `index.html` now! 🚀**
+
