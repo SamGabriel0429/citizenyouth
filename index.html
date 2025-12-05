@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citizen Youth - Stay Informed</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- MapLibre GL CSS for 3D map (open-source, no API key required for demo tiles) -->
+    <link href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="app-container">
+
+        <!-- Header -->
+        <header class="header">
+            <h1>Citizen Youth PH</h1>
+            <p class="tagline">Ang iyong boses ay mahalaga 🇵🇭</p>
+            <!-- header-actions removed: notification button moved to a floating position for better visibility -->
+            <div class="user-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="articlesRead">127</span>
+                    <span class="stat-label">Articles Read</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="eventsJoined">8</span>
+                    <span class="stat-label">Events Joined</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="votesCast">15</span>
+                    <span class="stat-label">Votes Cast</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Search news, events, or topics...">
+                <span class="search-icon">🔍</span>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs">
+            <button class="tab-btn active" data-tab="news">News</button>
+
+            <button class="tab-btn" data-tab="map">My City</button>
+
+            <button class="tab-btn" data-tab="community">Community</button>
+
+            <button class="tab-btn" data-tab="action">Take Action</button>
+            
+            <button class="tab-btn" data-tab="polls">Polls</button>
+        </nav>
+
+        <!-- News Section -->
+        <section id="news" class="tab-content active">
+            <h2>What's Happening</h2>
+
+            <!-- Filter Chips -->
+            <div class="filter-chips">
+                <button class="filter-chip active" data-filter="all">All</button>
+                <button class="filter-chip" data-filter="environment">Environment</button>
+                <button class="filter-chip" data-filter="education">Education</button>
+                <button class="filter-chip" data-filter="community">Community</button>
+            </div>
+
+            <div class="news-cards">
+                <div class="news-card" data-category="environment">
+                    <span class="category">🌍 Environment</span>
+                    <h3>Manila Bay Cleanup Drive This Saturday</h3>
+                    <p>Join 200+ volunteers for a massive coastal cleanup in Manila Bay. Help protect our seas and marine life. Bring your own gloves!</p>
+                    <div class="news-footer">
+                        <span class="time">2 hours ago</span>
+                        <div class="news-actions">
+                            <button class="news-action-btn like-btn" title="Like">❤️</button>
+                            <button class="news-action-btn bookmark-btn" title="Bookmark">🔖</button>
+                            <button class="news-action-btn share-btn" title="Share">📤</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card" data-category="education">
+                    <span class="category">📚 Education</span>
+                    <h3>Free STEM Scholarship Program Opens</h3>
+                    <p>Department of Education announces 5,000 full scholarships for deserving high school students in STEM fields. Apply now before December 31!</p>
+                    <div class="news-footer">
+                        <span class="time">5 hours ago</span>
+                        <div class="news-actions">
+                            <button class="news-action-btn like-btn" title="Like">❤️</button>
+                            <button class="news-action-btn bookmark-btn" title="Bookmark">🔖</button>
+                            <button class="news-action-btn share-btn" title="Share">📤</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card" data-category="community">
+                    <span class="category">🏛️ Community</span>
+                    <h3>Youth National Assembly Calls for Feedback</h3>
+                    <p>The National Youth Commission invites all Filipino youth aged 15-30 to share their ideas on education, livelihood, and mental health support programs.</p>
+                    <div class="news-footer">
+                        <span class="time">1 day ago</span>
+                        <div class="news-actions">
+                            <button class="news-action-btn like-btn" title="Like">❤️</button>
+                            <button class="news-action-btn bookmark-btn" title="Bookmark">🔖</button>
+                            <button class="news-action-btn share-btn" title="Share">📤</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card" data-category="environment">
+                    <span class="category">🌍 Environment</span>
+                    <h3>Zero Waste Movement in Barangays</h3>
+                    <p>Local government units in Metro Manila launch zero-waste initiatives. Learn how your barangay can reduce garbage and promote composting.</p>
+                    <div class="news-footer">
+                        <span class="time">3 days ago</span>
+                        <div class="news-actions">
+                            <button class="news-action-btn like-btn" title="Like">❤️</button>
+                            <button class="news-action-btn bookmark-btn" title="Bookmark">🔖</button>
+                            <button class="news-action-btn share-btn" title="Share">📤</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card" data-category="education">
+                    <span class="category">📚 Education</span>
+                    <h3>Coding Bootcamp for Underprivileged Youth Launches</h3>
+                    <p>Tech4All initiative provides free coding and digital skills training for 1,000 youth from low-income families. Register at tech4all.gov.ph today!</p>
+                    <div class="news-footer">
+                        <span class="time">6 hours ago</span>
+                        <div class="news-actions">
+                            <button class="news-action-btn like-btn" title="Like">❤️</button>
+                            <button class="news-action-btn bookmark-btn" title="Bookmark">🔖</button>
+                            <button class="news-action-btn share-btn" title="Share">📤</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card" data-category="community">
+                    <span class="category">🏛️ Community</span>
+                    <h3>Mental Health Support Centers Open in Schools</h3>
+                    <p>DepEd introduces counseling centers in 500 public schools nationwide. Free mental health services now available for all students. Priority: suicide prevention and anxiety management.</p>
+                    <div class="news-footer">
+                        <span class="time">12 hours ago</span>
+                        <div class="news-actions">
+                            <button class="news-action-btn like-btn" title="Like">❤️</button>
+                            <button class="news-action-btn bookmark-btn" title="Bookmark">🔖</button>
+                            <button class="news-action-btn share-btn" title="Share">📤</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card" data-category="environment">
+                    <span class="category">🌍 Environment</span>
+                    <h3>Typhoon Preparedness Webinar for Communities</h3>
+                    <p>PAGASA holds free webinars on typhoon safety, disaster preparedness, and climate resilience. Learn how to protect your family and community this season.</p>
+                    <div class="news-footer">
+                        <span class="time">1 day ago</span>
+                        <div class="news-actions">
+                            <button class="news-action-btn like-btn" title="Like">❤️</button>
+                            <button class="news-action-btn bookmark-btn" title="Bookmark">🔖</button>
+                            <button class="news-action-btn share-btn" title="Share">📤</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card" data-category="community">
+                    <span class="category">🏛️ Community</span>
+                    <h3>Youth Entrepreneurship Summit 2025</h3>
+                    <p>Join successful young entrepreneurs and investors at the annual summit. Learn startup secrets, pitching techniques, and get mentorship from industry leaders.</p>
+                    <div class="news-footer">
+                        <span class="time">2 days ago</span>
+                        <div class="news-actions">
+                            <button class="news-action-btn like-btn" title="Like">❤️</button>
+                            <button class="news-action-btn bookmark-btn" title="Bookmark">🔖</button>
+                            <button class="news-action-btn share-btn" title="Share">📤</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card" data-category="education">
+                    <span class="category">📚 Education</span>
+                    <h3>Scholarship Opportunities for Vocational Courses</h3>
+                    <p>Technical Education and Skills Development Authority (TESDA) opens 2,000 scholarship slots for plumbing, welding, and hospitality courses nationwide.</p>
+                    <div class="news-footer">
+                        <span class="time">3 days ago</span>
+                        <div class="news-actions">
+                            <button class="news-action-btn like-btn" title="Like">❤️</button>
+                            <button class="news-action-btn bookmark-btn" title="Bookmark">🔖</button>
+                            <button class="news-action-btn share-btn" title="Share">📤</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-card" data-category="environment">
+                    <span class="category">🌍 Environment</span>
+                    <h3>Plastic-Free Campus Initiative Gains Momentum</h3>
+                    <p>Universities and high schools unite to eliminate single-use plastics. 50 schools join the movement to create sustainable campus environments by 2025.</p>
+                    <div class="news-footer">
+                        <span class="time">4 days ago</span>
+                        <div class="news-actions">
+                            <button class="news-action-btn like-btn" title="Like">❤️</button>
+                            <button class="news-action-btn bookmark-btn" title="Bookmark">🔖</button>
+                            <button class="news-action-btn share-btn" title="Share">📤</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Emergency Alerts Section -->
+        <section id="alerts" class="tab-content">
+            <h2>🚨 Emergency Alerts</h2>
+            
+            <!-- Alert Stats Dashboard -->
+            <div class="alert-stats">
+                <div class="alert-stat-card critical">
+                    <span class="alert-stat-number" id="criticalCount">0</span>
+                    <span class="alert-stat-label">Critical</span>
+                </div>
+                <div class="alert-stat-card high">
+                    <span class="alert-stat-number" id="highCount">0</span>
+                    <span class="alert-stat-label">High</span>
+                </div>
+                <div class="alert-stat-card medium">
+                    <span class="alert-stat-number" id="mediumCount">0</span>
+                    <span class="alert-stat-label">Medium</span>
+                </div>
+                <div class="alert-stat-card low">
+                    <span class="alert-stat-number" id="lowCount">0</span>
+                    <span class="alert-stat-label">Low</span>
+                </div>
+            </div>
+
+            <!-- Alert Filter & Controls -->
+            <div class="alert-controls">
+                <div class="alert-filters">
+                    <button class="alert-filter-btn active" data-alert-filter="all">All Alerts</button>
+                    <button class="alert-filter-btn" data-alert-filter="weather">⛈️ Weather</button>
+                    <button class="alert-filter-btn" data-alert-filter="earthquake">🌍 Earthquake</button>
+                    <button class="alert-filter-btn" data-alert-filter="missing">👤 Missing Persons</button>
+                    <button class="alert-filter-btn" data-alert-filter="announcement">📢 City Announcements</button>
+                </div>
+                <div class="alert-settings">
+                    <button class="alert-sound-toggle" id="soundToggle" title="Toggle Sound Alerts">🔔 Sound On</button>
+                    <button class="alert-clear-read" id="clearRead" title="Clear Read Alerts">Clear Read</button>
+                </div>
+            </div>
+
+            <!-- Active Banner Alerts (Top Priority) -->
+            <div id="activeBannerAlerts" class="active-banner-alerts">
+                <!-- High priority alerts display here as banner notifications -->
+            </div>
+
+            <!-- Alert Feed -->
+            <div id="alertFeed" class="alert-feed">
+                <!-- Alert items populate here -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyAlertsState" class="empty-state" style="display: none;">
+                <div class="empty-icon">✨</div>
+                <h3>No Active Alerts</h3>
+                <p>You're all caught up! Check back regularly for important updates about your community.</p>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section id="map" class="tab-content">
+            <h2>What's Happening in My City? 🗺️</h2>
+            <div class="city-selector">
+                <select id="citySelect" class="city-dropdown">
+                    <option value="manila">Metro Manila</option>
+                    <option value="cebu">Cebu City</option>
+                    <option value="davao">Davao City</option>
+                    <option value="iloilo">Iloilo City</option>
+                    <option value="quezon">Quezon City</option>
+                    <option value="cagayan">Cagayan de Oro</option>
+                    <option value="bacolod">Bacolod City</option>
+                    <option value="zamboanga">Zamboanga City</option>
+                    <option value="lapu">Lapu-Lapu City</option>
+                    <option value="imus">Imus, Cavite</option>
+                    <option value="dumaguete">Dumaguete City</option>
+                </select>
+            </div>
+            
+            <!-- Google Maps Style Map -->
+            <div class="map-container-3d">
+                <div class="map-background-3d">
+                    <!-- Google Maps style SVG -->
+                    <svg class="map-svg-3d" viewBox="0 0 480 360" preserveAspectRatio="xMidYMid slice">
+                        <defs>
+                            <!-- Google Maps style gradients -->
+                            <linearGradient id="gmapWater" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#b3e5fc;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#81d4fa;stop-opacity:1" />
+                            </linearGradient>
+                            <!-- Google Maps land -->
+                            <linearGradient id="gmapLand" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#f1f1f1;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#e8e8e8;stop-opacity:1" />
+                            </linearGradient>
+                            <!-- Google Maps parks -->
+                            <linearGradient id="gmapPark" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#c8e6c9;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#a5d6a7;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        
+                        <!-- Base land background -->
+                        <rect width="480" height="360" fill="url(#gmapLand)"/>
+                        
+                        <!-- Water bodies with realistic shapes -->
+                        <path d="M 0 200 Q 60 190 120 200 T 240 185 T 380 200 L 480 190 L 480 360 L 0 360 Z" fill="url(#gmapWater)"/>
+                        <circle cx="100" cy="290" r="35" fill="#81d4fa"/>
+                        <ellipse cx="420" cy="260" rx="45" ry="32" fill="#81d4fa"/>
+                        
+                        <!-- City blocks/districts -->
+                        <g id="gmaps-roads" stroke="#999" stroke-width="1" fill="none">
+                            <!-- Main streets -->
+                            <line x1="0" y1="100" x2="480" y2="100" stroke="#ccc" stroke-width="3"/>
+                            <line x1="0" y1="150" x2="480" y2="150" stroke="#ddd" stroke-width="2"/>
+                            <line x1="0" y1="200" x2="480" y2="200" stroke="#ddd" stroke-width="2"/>
+                            <line x1="0" y1="250" x2="480" y2="250" stroke="#ddd" stroke-width="2"/>
+                            
+                            <!-- Vertical streets -->
+                            <line x1="80" y1="50" x2="80" y2="320" stroke="#ddd" stroke-width="2"/>
+                            <line x1="160" y1="50" x2="160" y2="330" stroke="#ccc" stroke-width="3"/>
+                            <line x1="240" y1="40" x2="240" y2="340" stroke="#ccc" stroke-width="3"/>
+                            <line x1="320" y1="50" x2="320" y2="330" stroke="#ddd" stroke-width="2"/>
+                            <line x1="400" y1="60" x2="400" y2="320" stroke="#ddd" stroke-width="2"/>
+                        </g>
+                        
+                        <!-- Parks/Green spaces -->
+                        <rect x="50" y="240" width="60" height="80" fill="url(#gmapPark)" rx="4"/>
+                        <circle cx="320" cy="130" r="35" fill="url(#gmapPark)"/>
+                        <ellipse cx="420" cy="100" rx="40" ry="30" fill="url(#gmapPark)"/>
+                        
+                        <!-- Building blocks (light gray) -->
+                        <rect x="90" y="70" width="35" height="25" fill="#e0e0e0" stroke="#999" stroke-width="0.5"/>
+                        <rect x="135" y="65" width="20" height="30" fill="#d9d9d9" stroke="#999" stroke-width="0.5"/>
+                        <rect x="170" y="75" width="30" height="20" fill="#e0e0e0" stroke="#999" stroke-width="0.5"/>
+                        
+                        <rect x="250" y="110" width="40" height="30" fill="#d9d9d9" stroke="#999" stroke-width="0.5"/>
+                        <rect x="300" y="105" width="35" height="35" fill="#e0e0e0" stroke="#999" stroke-width="0.5"/>
+                        <rect x="350" y="115" width="25" height="25" fill="#d9d9d9" stroke="#999" stroke-width="0.5"/>
+                        
+                        <!-- POI labels area (subtle) -->
+                        <text x="120" y="220" font-size="9" fill="#999" font-family="Arial" font-weight="bold">Business District</text>
+                        <text x="280" y="310" font-size="9" fill="#666" font-family="Arial">Community Park</text>
+                    </svg>
+                </div>
+                <!-- Real 3D map will mount here when available (MapLibre) -->
+                <div id="cityMap" class="city-map" role="region" aria-label="3D city map" ></div>
+
+                <!-- Map legend -->
+                <div class="map-legend" role="list" aria-label="Map legend">
+                    <div class="legend-item" role="listitem"><span class="legend-swatch school">🎓</span> <span>School</span></div>
+                    <div class="legend-item" role="listitem"><span class="legend-swatch hospital">🏥</span> <span>Hospital</span></div>
+                    <div class="legend-item" role="listitem"><span class="legend-swatch park">🌳</span> <span>Park</span></div>
+                    <div class="legend-item" role="listitem"><span class="legend-swatch government">🏛️</span> <span>Government</span></div>
+                    <div class="legend-item" role="listitem"><span class="legend-swatch mall">🏬</span> <span>Mall</span></div>
+                    <div class="legend-item" role="listitem"><span class="legend-swatch landmark">📍</span> <span>Landmark</span></div>
+                </div>
+
+                <!-- Enhanced map markers with 3D pins -->
+                <div class="map-markers-container-3d">
+                    <!-- Marker 1: Manila Bay -->
+                    <div class="map-marker-3d" data-location="manila-bay" style="top: 35%; left: 22%;">
+                        <div class="marker-pin-3d">
+                            <span class="marker-emoji-3d">🌊</span>
+                            <span class="marker-dot"></span>
+                        </div>
+                        <span class="marker-label-3d">Manila Bay</span>
+                    </div>
+                    
+                    <!-- Marker 2: Quezon City Hall -->
+                    <div class="map-marker-3d" data-location="quezon-hall" style="top: 55%; left: 50%;">
+                        <div class="marker-pin-3d">
+                            <span class="marker-emoji-3d">🏢</span>
+                            <span class="marker-dot"></span>
+                        </div>
+                        <span class="marker-label-3d">Quezon City</span>
+                    </div>
+                    
+                    <!-- Marker 3: Youth Center -->
+                    <div class="map-marker-3d" data-location="youth-center" style="top: 25%; left: 72%;">
+                        <div class="marker-pin-3d">
+                            <span class="marker-emoji-3d">🎓</span>
+                            <span class="marker-dot"></span>
+                        </div>
+                        <span class="marker-label-3d">Youth Center</span>
+                    </div>
+                    
+                    <!-- Marker 4: Business Hub -->
+                    <div class="map-marker-3d" data-location="business-hub" style="top: 70%; left: 80%;">
+                        <div class="marker-pin-3d">
+                            <span class="marker-emoji-3d">💼</span>
+                            <span class="marker-dot"></span>
+                        </div>
+                        <span class="marker-label-3d">Business Hub</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Enhanced Location List with better layout -->
+            <div class="location-list-3d">
+                <div class="location-card" data-location="manila-bay">
+                    <div class="location-left">
+                        <div class="location-emoji">🌊</div>
+                        <div class="location-info">
+                            <h3>Manila Bay</h3>
+                            <p class="location-event">Coastal Cleanup Drive</p>
+                            <p class="location-time">⏰ Saturday 6:00 AM</p>
+                        </div>
+                    </div>
+                    <div class="location-right">
+                        <span class="location-distance-badge">15 km</span>
+                        <span class="location-status">Active</span>
+                    </div>
+                </div>
+                
+                <div class="location-card" data-location="quezon-hall">
+                    <div class="location-left">
+                        <div class="location-emoji">🏢</div>
+                        <div class="location-info">
+                            <h3>Quezon City Hall</h3>
+                            <p class="location-event">Community Feeding Program</p>
+                            <p class="location-time">⏰ Ongoing Daily</p>
+                        </div>
+                    </div>
+                    <div class="location-right">
+                        <span class="location-distance-badge">8 km</span>
+                        <span class="location-status active">Active</span>
+                    </div>
+                </div>
+                
+                <div class="location-card" data-location="youth-center">
+                    <div class="location-left">
+                        <div class="location-emoji">🎓</div>
+                        <div class="location-info">
+                            <h3>Youth Center</h3>
+                            <p class="location-event">STEM Workshop & Mentorship</p>
+                            <p class="location-time">⏰ Next Tuesday 4:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="location-right">
+                        <span class="location-distance-badge">5 km</span>
+                        <span class="location-status">Coming</span>
+                    </div>
+                </div>
+                
+                <div class="location-card" data-location="business-hub">
+                    <div class="location-left">
+                        <div class="location-emoji">💼</div>
+                        <div class="location-info">
+                            <h3>Business Hub</h3>
+                            <p class="location-event">Entrepreneurship Mentoring</p>
+                            <p class="location-time">⏰ Daily 2:00 - 5:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="location-right">
+                        <span class="location-distance-badge">3 km</span>
+                        <span class="location-status active">Active</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Section -->
+        <section id="community" class="tab-content">
+            <h2>Community — Live & Safe</h2>
+            <div class="community-layout">
+                <div class="chat-column">
+                    <div class="chat-header">
+                        <div class="chat-title">Public Room: Youth Forum</div>
+                        <div class="chat-controls">
+                            <button class="btn small" id="open-guidelines">Safety</button>
+                            <button class="btn small" id="open-privacy">Privacy</button>
+                        </div>
+                    </div>
+
+                    <div class="chat-container" id="chatContainer">
+                        <div class="messages" id="messages"></div>
+                    </div>
+
+                    <div class="chat-input-row">
+                        <input id="chatInput" class="chat-input" placeholder="Say something respectful..." maxlength="400">
+                        <button id="sendChat" class="btn">Send</button>
+                    </div>
+                </div>
+
+                <aside class="side-column">
+                    <div class="panel">
+                        <h3>Notifications</h3>
+                        <div id="notificationsList" class="notifications-list">No notifications yet</div>
+                        <!-- Moderator toggle (hidden by default, shown for moderators) -->
+                        <button id="modToggle" class="btn small hidden" style="margin-top:8px;">Moderator</button>
+                    </div>
+
+                    <div class="panel">
+                        <h3>Upcoming Events</h3>
+                        <div class="events-list">
+                            <div class="event-item">
+                                <div class="event-title">Manila Bay Cleanup</div>
+                                <div class="event-meta">Sat · 6:00 AM · Manila Bay</div>
+                            </div>
+                            <div class="event-item">
+                                <div class="event-title">Youth Entrepreneurship Summit</div>
+                                <div class="event-meta">Dec 12 · Quezon City</div>
+                            </div>
+                            <div class="event-item">
+                                <div class="event-title">STEM Workshop</div>
+                                <div class="event-meta">Next Tue · Youth Center</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <h3>Threads</h3>
+                        <div class="threads-search">
+                            <input type="search" placeholder="Search threads..." aria-label="Search threads">
+                        </div>
+                        <div class="threads-list">
+                            <a href="#" class="thread-item">#Climate Action (32)</a>
+                            <a href="#" class="thread-item">#Education (18)</a>
+                            <a href="#" class="thread-item">#Volunteer (9)</a>
+                        </div>
+                    </div>
+
+                    <div class="panel moderator-panel" id="moderatorPanel" style="display:none;">
+                        <h3>Moderator Queue</h3>
+                        <div id="modQueue">No reports</div>
+                        <button id="modShowBtn" class="btn small">Open Mod Queue</button>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- Action Section -->
+        <section id="action" class="tab-content">
+            <h2>Take Action</h2>
+            <div class="action-cards">
+                <div class="action-card" data-action="donate">
+                    <span class="action-icon">💰</span>
+                    <h3>Donate</h3>
+                    <p>Support local causes and community programs</p>
+                    <button class="action-btn" data-modal="donate-modal">Find Causes</button>
+                </div>
+                <div class="action-card" data-action="volunteer">
+                    <span class="action-icon">🤝</span>
+                    <h3>Volunteer</h3>
+                    <p>Give your time to make a difference</p>
+                    <button class="action-btn" data-modal="volunteer-modal">See Opportunities</button>
+                </div>
+                <div class="action-card" data-action="events">
+                    <span class="action-icon">📅</span>
+                    <h3>Join Events</h3>
+                    <p>Attend community gatherings and workshops</p>
+                    <button class="action-btn" data-modal="events-modal">Browse Events</button>
+                </div>
+                <div class="action-card" data-action="awareness">
+                    <span class="action-icon">📢</span>
+                    <h3>Spread Awareness</h3>
+                    <p>Share important issues with your network</p>
+                    <button class="action-btn" data-modal="awareness-modal">Share Stories</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODALS FOR INTERACTIVE ACTIONS -->
+        
+        <!-- Donate Modal -->
+        <div id="donate-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>💰 Choose Donation Amount</h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-subtitle">Support our community causes in the Philippines</p>
+                    <div class="donation-options">
+                        <div class="donation-card" data-amount="500">
+                            <div class="amount">₱500</div>
+                            <div class="description">Small Donation<br><small>Help fund basic supplies</small></div>
+                        </div>
+                        <div class="donation-card" data-amount="1000">
+                            <div class="amount">₱1,000</div>
+                            <div class="description">Regular Donation<br><small>Support student programs</small></div>
+                        </div>
+                        <div class="donation-card" data-amount="2500">
+                            <div class="amount">₱2,500</div>
+                            <div class="description">Generous Donation<br><small>Fund a workshop</small></div>
+                        </div>
+                        <div class="donation-card" data-amount="5000">
+                            <div class="amount">₱5,000</div>
+                            <div class="description">Major Donation<br><small>Transform a community</small></div>
+                        </div>
+                    </div>
+                    <div class="donation-causes">
+                        <h3>Choose a Cause:</h3>
+                        <label class="cause-option">
+                            <input type="radio" name="cause" value="environment" checked>
+                            <span>🌍 Environmental Programs</span>
+                        </label>
+                        <label class="cause-option">
+                            <input type="radio" name="cause" value="education">
+                            <span>📚 Education & Scholarships</span>
+                        </label>
+                        <label class="cause-option">
+                            <input type="radio" name="cause" value="health">
+                            <span>💪 Health & Wellness</span>
+                        </label>
+                        <label class="cause-option">
+                            <input type="radio" name="cause" value="livelihood">
+                            <span>💼 Livelihood Programs</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-btn cancel-btn">Cancel</button>
+                    <button class="modal-btn confirm-btn" id="donate-confirm">Proceed to Donation</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Volunteer Modal -->
+        <div id="volunteer-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>🤝 Volunteer Opportunities</h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-subtitle">Choose how you'd like to contribute</p>
+                    <div class="volunteer-options">
+                        <div class="volunteer-card">
+                            <div class="vol-icon">🌊</div>
+                            <h3>Environmental Cleanup</h3>
+                            <p>Join coastal and river cleanup drives. 4-6 hours per session.</p>
+                            <span class="commitment">Weekly • 3-4 hours</span>
+                            <button class="vol-btn">Join Now</button>
+                        </div>
+                        <div class="volunteer-card">
+                            <div class="vol-icon">📚</div>
+                            <h3>Tutoring & Mentoring</h3>
+                            <p>Help students with homework and career guidance.</p>
+                            <span class="commitment">Flexible • 2-3 hours</span>
+                            <button class="vol-btn">Join Now</button>
+                        </div>
+                        <div class="volunteer-card">
+                            <div class="vol-icon">🏥</div>
+                            <h3>Community Health Drive</h3>
+                            <p>Assist in health seminars and vaccination campaigns.</p>
+                            <span class="commitment">Monthly • 6-8 hours</span>
+                            <button class="vol-btn">Join Now</button>
+                        </div>
+                        <div class="volunteer-card">
+                            <div class="vol-icon">🍲</div>
+                            <h3>Community Feeding</h3>
+                            <p>Help organize and distribute meals to communities.</p>
+                            <span class="commitment">Monthly • 4-5 hours</span>
+                            <button class="vol-btn">Join Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-btn cancel-btn">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Events Modal -->
+        <div id="events-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>📅 Upcoming Events</h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-subtitle">Find and join community events</p>
+                    <div class="events-filter">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="this-week">This Week</button>
+                        <button class="filter-btn" data-filter="this-month">This Month</button>
+                    </div>
+                    <div class="events-list">
+                        <div class="event-item">
+                            <div class="event-date">
+                                <span class="day">06</span>
+                                <span class="month">DEC</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Manila Bay Cleanup Drive</h3>
+                                <p>📍 Manila Bay Foreshore Park</p>
+                                <p>⏰ 6:00 AM - 10:00 AM</p>
+                                <span class="event-capacity">Capacity: 200/250 joined</span>
+                            </div>
+                            <button class="event-join-btn">Join</button>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date">
+                                <span class="day">08</span>
+                                <span class="month">DEC</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>STEM Workshop for High School Students</h3>
+                                <p>📍 Youth Center, Quezon City</p>
+                                <p>⏰ 2:00 PM - 5:00 PM</p>
+                                <span class="event-capacity">Capacity: 45/50 joined</span>
+                            </div>
+                            <button class="event-join-btn">Join</button>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date">
+                                <span class="day">12</span>
+                                <span class="month">DEC</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Youth Entrepreneurship Mentorship Session</h3>
+                                <p>📍 Business Hub, Makati</p>
+                                <p>⏰ 7:00 PM - 9:00 PM</p>
+                                <span class="event-capacity">Capacity: 30/40 joined</span>
+                            </div>
+                            <button class="event-join-btn">Join</button>
+                        </div>
+                        <div class="event-item">
+                            <div class="event-date">
+                                <span class="day">15</span>
+                                <span class="month">DEC</span>
+                            </div>
+                            <div class="event-details">
+                                <h3>Mental Health Awareness Campaign</h3>
+                                <p>📍 University of the Philippines</p>
+                                <p>⏰ 10:00 AM - 1:00 PM</p>
+                                <span class="event-capacity">Capacity: 150/300 joined</span>
+                            </div>
+                            <button class="event-join-btn">Join</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-btn cancel-btn">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Awareness Modal -->
+        <div id="awareness-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>📢 Share Your Story</h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-subtitle">Help raise awareness about important issues</p>
+                    <div class="awareness-form">
+                        <label>What issue are you passionate about?</label>
+                        <select class="awareness-select">
+                            <option selected disabled>Select an issue...</option>
+                            <option value="environment">🌍 Environmental Issues</option>
+                            <option value="education">📚 Education Reform</option>
+                            <option value="mental-health">💭 Mental Health</option>
+                            <option value="livelihood">💼 Livelihood & Jobs</option>
+                            <option value="social">🤝 Social Issues</option>
+                        </select>
+
+                        <label>Your Message (max 280 characters)</label>
+                        <textarea class="awareness-textarea" placeholder="Share your thoughts, experience, or call to action..." maxlength="280"></textarea>
+                        <span class="char-count">0/280</span>
+
+                        <label>Share on:</label>
+                        <div class="share-options">
+                            <button class="share-btn" data-platform="facebook">
+                                <span>📘</span> Facebook
+                            </button>
+                            <button class="share-btn" data-platform="twitter">
+                                <span>𝕏</span> Twitter
+                            </button>
+                            <button class="share-btn" data-platform="tiktok">
+                                <span>🎵</span> TikTok
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-btn cancel-btn">Cancel</button>
+                    <button class="modal-btn confirm-btn" id="awareness-confirm">Post & Share</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Report Modal -->
+        <div id="report-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Report Content</h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Please tell us why you're reporting this message (required)</p>
+                    <select id="reportReason">
+                        <option value="harassment">Harassment / Abuse</option>
+                        <option value="spam">Spam / Scam</option>
+                        <option value="sexual">Sexual Content</option>
+                        <option value="selfharm">Self-harm / Suicide</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <label>Optional details</label>
+                    <textarea id="reportDetails" maxlength="500" placeholder="Additional context (optional)"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-btn cancel-btn">Cancel</button>
+                    <button class="modal-btn confirm-btn" id="report-confirm">Submit Report</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Safety Guidelines Modal -->
+        <div id="guidelines-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Community Safety & Guidelines</h2>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li>Be respectful. No harassment, hate speech, or doxxing.</li>
+                        <li>Report content that threatens safety or promotes violence.</li>
+                        <li>Protect personal info — do not share other people's private data.</li>
+                        <li>If you or someone is in danger, contact local emergency services immediately.</li>
+                    </ul>
+                    <p>Philippines helpline: <strong>National Center for Mental Health — 0917-899-8727</strong></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-btn cancel-btn">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Polls Section -->
+        <section id="polls" class="tab-content">
+            <h2>Youth Voice Polls 🗳️</h2>
+            <div class="poll-analytics">
+                <div class="trending-badge">
+                    <span>📈 Trending Topics</span>
+                    <span class="trend-count">1,247 responses</span>
+                </div>
+            </div>
+            <div class="poll-cards">
+                <div class="poll-card" data-poll-id="climate">
+                    <h3>What environmental issue concerns you most?</h3>
+                    <div class="poll-options">
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll1" value="climate">
+                                <span>Climate Change & Typhoons</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 42%"></div>
+                            </div>
+                            <span class="poll-percent">42%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll1" value="waste">
+                                <span>Waste & Plastic Pollution</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 35%"></div>
+                            </div>
+                            <span class="poll-percent">35%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll1" value="water">
+                                <span>Water Quality & Access</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 18%"></div>
+                            </div>
+                            <span class="poll-percent">18%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll1" value="air">
+                                <span>Air Pollution</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 5%"></div>
+                            </div>
+                            <span class="poll-percent">5%</span>
+                        </div>
+                    </div>
+                    <button class="vote-btn">Vote Now</button>
+                    <span class="poll-info">📊 3,842 votes</span>
+                </div>
+
+                <div class="poll-card" data-poll-id="education">
+                    <h3>What education reform do you support?</h3>
+                    <div class="poll-options">
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll2" value="vocational">
+                                <span>More Vocational/Technical Schools</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 45%"></div>
+                            </div>
+                            <span class="poll-percent">45%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll2" value="mental">
+                                <span>Mental Health Support in Schools</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 32%"></div>
+                            </div>
+                            <span class="poll-percent">32%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll2" value="scholar">
+                                <span>More Scholarship Programs</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 17%"></div>
+                            </div>
+                            <span class="poll-percent">17%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll2" value="digital">
+                                <span>Better Digital Learning Access</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 6%"></div>
+                            </div>
+                            <span class="poll-percent">6%</span>
+                        </div>
+                    </div>
+                    <button class="vote-btn">Vote Now</button>
+                    <span class="poll-info">📊 2,156 votes</span>
+                </div>
+
+                <div class="poll-card" data-poll-id="livelihood">
+                    <h3>What support do you need for livelihood?</h3>
+                    <div class="poll-options">
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll3" value="skills">
+                                <span>Free Skills Training Programs</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 50%"></div>
+                            </div>
+                            <span class="poll-percent">50%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll3" value="startup">
+                                <span>Startup Funding & Mentorship</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 28%"></div>
+                            </div>
+                            <span class="poll-percent">28%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll3" value="jobboard">
+                                <span>Better Job Matching Platform</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 17%"></div>
+                            </div>
+                            <span class="poll-percent">17%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll3" value="subsidies">
+                                <span>Livelihood Subsidies</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 5%"></div>
+                            </div>
+                            <span class="poll-percent">5%</span>
+                        </div>
+                    </div>
+                    <button class="vote-btn">Vote Now</button>
+                    <span class="poll-info">📊 1,923 votes</span>
+                </div>
+
+                <div class="poll-card" data-poll-id="health">
+                    <h3>What's the biggest health challenge for youth?</h3>
+                    <div class="poll-options">
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll4" value="mental-health">
+                                <span>Mental Health & Anxiety</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 48%"></div>
+                            </div>
+                            <span class="poll-percent">48%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll4" value="obesity">
+                                <span>Obesity & Poor Nutrition</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 28%"></div>
+                            </div>
+                            <span class="poll-percent">28%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll4" value="substance">
+                                <span>Substance Abuse Prevention</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 18%"></div>
+                            </div>
+                            <span class="poll-percent">18%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll4" value="reproductive">
+                                <span>Reproductive Health Education</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 6%"></div>
+                            </div>
+                            <span class="poll-percent">6%</span>
+                        </div>
+                    </div>
+                    <button class="vote-btn">Vote Now</button>
+                    <span class="poll-info">📊 2,847 votes</span>
+                </div>
+
+                <div class="poll-card" data-poll-id="technology">
+                    <h3>What tech skills should be taught in schools?</h3>
+                    <div class="poll-options">
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll5" value="coding">
+                                <span>Coding & Programming</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 52%"></div>
+                            </div>
+                            <span class="poll-percent">52%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll5" value="cybersecurity">
+                                <span>Cybersecurity & Digital Safety</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 25%"></div>
+                            </div>
+                            <span class="poll-percent">25%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll5" value="ai">
+                                <span>Artificial Intelligence & ML</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 18%"></div>
+                            </div>
+                            <span class="poll-percent">18%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll5" value="design">
+                                <span>UI/UX & Digital Design</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 5%"></div>
+                            </div>
+                            <span class="poll-percent">5%</span>
+                        </div>
+                    </div>
+                    <button class="vote-btn">Vote Now</button>
+                    <span class="poll-info">📊 3,124 votes</span>
+                </div>
+
+                <div class="poll-card" data-poll-id="politics">
+                    <h3>What issue should government prioritize?</h3>
+                    <div class="poll-options">
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll6" value="corruption">
+                                <span>Fighting Corruption</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 55%"></div>
+                            </div>
+                            <span class="poll-percent">55%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll6" value="inflation">
+                                <span>Controlling Inflation & Prices</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 26%"></div>
+                            </div>
+                            <span class="poll-percent">26%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll6" value="crime">
+                                <span>Public Safety & Crime Prevention</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 14%"></div>
+                            </div>
+                            <span class="poll-percent">14%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll6" value="healthcare">
+                                <span>Universal Healthcare Access</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 5%"></div>
+                            </div>
+                            <span class="poll-percent">5%</span>
+                        </div>
+                    </div>
+                    <button class="vote-btn">Vote Now</button>
+                    <span class="poll-info">📊 4,256 votes</span>
+                </div>
+
+                <div class="poll-card" data-poll-id="culture">
+                    <h3>How should we preserve Filipino culture?</h3>
+                    <div class="poll-options">
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll7" value="language">
+                                <span>Promote Local Languages</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 38%"></div>
+                            </div>
+                            <span class="poll-percent">38%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll7" value="arts">
+                                <span>Support Local Arts & Crafts</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 32%"></div>
+                            </div>
+                            <span class="poll-percent">32%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll7" value="festivals">
+                                <span>Celebrate Traditional Festivals</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 22%"></div>
+                            </div>
+                            <span class="poll-percent">22%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll7" value="museums">
+                                <span>Build Cultural Museums & Centers</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 8%"></div>
+                            </div>
+                            <span class="poll-percent">8%</span>
+                        </div>
+                    </div>
+                    <button class="vote-btn">Vote Now</button>
+                    <span class="poll-info">📊 1,654 votes</span>
+                </div>
+
+                <div class="poll-card" data-poll-id="remittance">
+                    <h3>How should OFW remittances be used for youth?</h3>
+                    <div class="poll-options">
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll8" value="education">
+                                <span>Education & Scholarship Programs</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 51%"></div>
+                            </div>
+                            <span class="poll-percent">51%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll8" value="business">
+                                <span>Small Business & Entrepreneurship</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 28%"></div>
+                            </div>
+                            <span class="poll-percent">28%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll8" value="skills">
+                                <span>Skills Training & Development</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 15%"></div>
+                            </div>
+                            <span class="poll-percent">15%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll8" value="healthcare">
+                                <span>Health & Wellness Programs</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 6%"></div>
+                            </div>
+                            <span class="poll-percent">6%</span>
+                        </div>
+                    </div>
+                    <button class="vote-btn">Vote Now</button>
+                    <span class="poll-info">📊 2,431 votes</span>
+                </div>
+
+                <div class="poll-card" data-poll-id="barangay">
+                    <h3>What's the best way to engage youth in barangay activities?</h3>
+                    <div class="poll-options">
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll9" value="community">
+                                <span>Community Service Projects</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 42%"></div>
+                            </div>
+                            <span class="poll-percent">42%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll9" value="sports">
+                                <span>Youth Sports & Wellness</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 31%"></div>
+                            </div>
+                            <span class="poll-percent">31%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll9" value="arts">
+                                <span>Arts, Culture & Entertainment</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 19%"></div>
+                            </div>
+                            <span class="poll-percent">19%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll9" value="governance">
+                                <span>Youth Council & Decision-Making</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 8%"></div>
+                            </div>
+                            <span class="poll-percent">8%</span>
+                        </div>
+                    </div>
+                    <button class="vote-btn">Vote Now</button>
+                    <span class="poll-info">📊 1,876 votes</span>
+                </div>
+
+                <div class="poll-card" data-poll-id="jeepney">
+                    <h3>What's the top priority for transportation in the Philippines?</h3>
+                    <div class="poll-options">
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll10" value="affordable">
+                                <span>Affordable Public Transport Fares</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 48%"></div>
+                            </div>
+                            <span class="poll-percent">48%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll10" value="safety">
+                                <span>Safe & Secure Commute</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 27%"></div>
+                            </div>
+                            <span class="poll-percent">27%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll10" value="frequency">
+                                <span>More Frequent & Reliable Service</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 18%"></div>
+                            </div>
+                            <span class="poll-percent">18%</span>
+                        </div>
+                        <div class="poll-option">
+                            <label>
+                                <input type="radio" name="poll10" value="environment">
+                                <span>Eco-Friendly & Green Transport</span>
+                            </label>
+                            <div class="poll-bar-container">
+                                <div class="poll-bar" style="width: 7%"></div>
+                            </div>
+                            <span class="poll-percent">7%</span>
+                        </div>
+                    </div>
+                    <button class="vote-btn">Vote Now</button>
+                    <span class="poll-info">📊 3,012 votes</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alert Details Modal -->
+        <div id="alertDetailsModal" class="modal alert-modal">
+            <div class="modal-content alert-modal-content">
+                <div class="modal-header alert-modal-header">
+                    <div class="alert-modal-title-wrapper">
+                        <span id="alertModalIcon" class="alert-modal-icon">⚠️</span>
+                        <h2 id="alertModalTitle">Alert Details</h2>
+                    </div>
+                    <span id="alertModalLevel" class="alert-level-badge critical">Critical</span>
+                    <button class="modal-close">&times;</button>
+                </div>
+                <div class="modal-body alert-modal-body">
+                    <div class="alert-modal-timestamp">
+                        <span class="timestamp-label">Issued:</span>
+                        <span id="alertModalTimestamp">--:-- --</span>
+                    </div>
+                    <div class="alert-modal-location">
+                        <span class="location-label">📍 Area:</span>
+                        <span id="alertModalLocation">--</span>
+                    </div>
+                    <div class="alert-modal-description">
+                        <h3>Details</h3>
+                        <p id="alertModalDescription">--</p>
+                    </div>
+                    <div class="alert-modal-actions">
+                        <h3>Recommended Actions</h3>
+                        <ul id="alertModalActions" class="actions-list">
+                            <!-- Actions populate here -->
+                        </ul>
+                    </div>
+                    <div class="alert-modal-additional">
+                        <h3>Additional Information</h3>
+                        <p id="alertModalAdditional">--</p>
+                    </div>
+                    <div class="alert-modal-footer">
+                        <a id="alertModalSourceLink" href="#" class="source-link" target="_blank">View Official Source →</a>
+                        <button class="btn primary" id="shareAlertBtn">📤 Share Alert</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MapLibre GL JS (must load before application script) -->
+    <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
+
+<!-- Floating notification button (moved out of header) -->
+<div class="floating-notif" aria-hidden="false">
+    <button id="notifBell" class="notif-bell" aria-label="Notifications" aria-expanded="false">🔔
+        <span id="notifBadge" class="notif-badge" aria-hidden="true">0</span>
+    </button>
+    <div id="notifDropdown" class="notif-dropdown" style="display:none">
+        <div class="notif-dropdown-header">
+            <strong>Notifications</strong>
+            <button id="markAllReadBtn" class="btn tiny">Mark all read</button>
+        </div>
+        <div id="notifDropdownList" class="notif-dropdown-list">No notifications</div>
+    </div>
+</div>

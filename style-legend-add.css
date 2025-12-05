@@ -1,0 +1,10 @@
+.map-legend { position:absolute; top:12px; left:12px; z-index:30; background:rgba(255,255,255,0.95); padding:8px 10px; border-radius:10px; font-size:13px; box-shadow: 0 6px 18px rgba(2,6,23,0.12); }
+.map-legend .legend-item { display:flex; gap:8px; align-items:center; margin-bottom:6px; color:#0f172a; }
+.map-legend .legend-item:last-child { margin-bottom: 0; }
+.legend-swatch { width:22px; height:22px; border-radius:6px; display:inline-flex; align-items:center; justify-content:center; font-size:12px; color: #fff; }
+.legend-swatch.school { background:#3b82f6 }
+.legend-swatch.hospital { background:#ef4444 }
+.legend-swatch.park { background:#10b981 }
+.legend-swatch.government { background:#6b7280 }
+.legend-swatch.mall { background:#8b5cf6 }
+.legend-swatch.landmark { background:#f97316 }

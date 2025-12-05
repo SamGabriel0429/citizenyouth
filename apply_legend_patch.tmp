@@ -1,0 +1,8 @@
+<div class="map-legend" role="list" aria-label="Map legend">
+    <div class="legend-item" role="listitem"><span class="legend-swatch school">🎓</span> <span>School</span></div>
+    <div class="legend-item" role="listitem"><span class="legend-swatch hospital">🏥</span> <span>Hospital</span></div>
+    <div class="legend-item" role="listitem"><span class="legend-swatch park">🌳</span> <span>Park</span></div>
+    <div class="legend-item" role="listitem"><span class="legend-swatch government">🏛️</span> <span>Government</span></div>
+    <div class="legend-item" role="listitem"><span class="legend-swatch mall">🏬</span> <span>Mall</span></div>
+    <div class="legend-item" role="listitem"><span class="legend-swatch landmark">📍</span> <span>Landmark</span></div>
+</div>
